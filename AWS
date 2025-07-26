@@ -901,6 +901,15 @@ Now use that snapshot to create a new EBS volume, but place it in the 1b zone.
 
 🧱 Step 3: Attach the new 1b volume to your 1b VM
 Now that the volume exists in 1b, attach it to the EC2 instance in that zone.
+  **
+SNAPSHOT USED FOR TAKING THE BACKUP
+
+D/B SNAP AND EBS
+
+EBS IS RESTRICTED TO ZONE BUT SNAP HELP US TO EXCHANGE DATA B/W INSTANCES PRESENT IN DIFF ZONE, REGION
+
+WHY DO WE CREATED SNAP: FOR QUICK DATA MIGRATION.... FROM SERVER 1 TO SERVER2
+
 
 🔄 What is Lifecycle Manager?
 ############################################
