@@ -1158,13 +1158,15 @@ AWS S3 (Simple Storage Service)
 ####################################
 ✅ What is S3?
 
-It is a storage service provided by Amazon Web Services (AWS) where you can store unlimited data (like files, images, videos, backups, documents, etc.) safely in the cloud.
+It is a storage service provided by Amazon Web Services (AWS) where you can store unlimited data (like files, images, videos, 
+backups, documents, etc.) safely in the cloud.
 
 It can be accessed anytime, from anywhere via the internet.
 
 ✅ Key Features:
 
-1. Unlimited Storage: No upper limit on how much you can store.👉 Maximum size for a single file (object) in S3: 5 Terabytes (TB) per object.
+1. Unlimited Storage: No upper limit on how much you can store.👉 Maximum size for a single file (object) in S3: 5 Terabytes
+(TB) per object.
 
 2. Object-Based Storage:
 
@@ -1254,7 +1256,8 @@ S3 Versioning is a feature that allows you to preserve, retrieve, and restore ev
 #########################################
 ⚡ What is S3 Transfer Acceleration?
 ##########################################
-a. S3 Transfer Acceleration is an AWS feature that speeds up file uploads and downloads to and from your S3 bucket, especially when:
+a. S3 Transfer Acceleration is an AWS feature that speeds up file uploads and downloads to and from your S3 bucket, especially
+when:
 b. The user is far from the S3 bucket's region
 c. You are transferring large files over long distances
 
