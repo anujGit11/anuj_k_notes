@@ -988,6 +988,16 @@ cd /var/www/html
 echo "<html><h1>Pankaj Sir Academy - 1</h1></html>" > index.html
 service httpd start
 
+
+#!/bin/bash
+sudo yum install -y httpd              # Install Apache HTTP Server
+sudo systemctl enable httpd           # Enable httpd to start at boot
+sudo systemctl start httpd            # Start the httpd service
+
+# Create a simple HTML file in Apache's web root
+echo "<html><body><h1>WELCOME 1</h1></body></html>" | sudo tee /var/www/html/index.html
+
+
 ✅ Features:
 Runs only once (at first boot)
 Ideal for installing packages, configuring software, setting up environments
@@ -1053,6 +1063,15 @@ yum install httpd -y
 cd /var/www/html
 echo "<html><h1>Pankaj Sir Academy - 1</h1></html>" > index.html
 service httpd start
+
+#!/bin/bash
+sudo yum install -y httpd              # Install Apache HTTP Server
+sudo systemctl enable httpd           # Enable httpd to start at boot
+sudo systemctl start httpd            # Start the httpd service
+
+# Create a simple HTML file in Apache's web root
+echo "<html><body><h1>WELCOME 1</h1></body></html>" | sudo tee /var/www/html/index.html
+
 
 🛠️ What this does:
 Installs Apache web server
