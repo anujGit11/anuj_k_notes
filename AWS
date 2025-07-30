@@ -2097,3 +2097,18 @@ NAT Gateway stands for Network Address Translation Gateway.
 It allows instances in a private subnet to access the internet, but prevents the internet from initiating connections back to those instances.
 Allows only outbound traffic.....
 Why Outbound traffic?.............."some application needs update and for this we have to allow outbound traffic"
+
+1.CREATE OUR OWN VPC
+2.Create route tables i.e private and public 
+3.Create SubNet i.e private and public
+4.Attach route tables to SubNets
+5.Create InternetGateway and attach to VPC
+6.Attach IGW to public Route Table.
+
+
+
+
+
+
+
+
