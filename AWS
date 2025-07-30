@@ -1726,7 +1726,8 @@ Link to AWS Documention: https://awscli.amazonaws.com/v2/documentation/api/lates
 #################################
 ☁️ CloudWatch – Overview
 #################################
-Amazon CloudWatch is a monitoring and observability service provided by AWS. It helps you collect, access, and analyze metrics, logs, and events from various AWS resources and applications in real time.
+Amazon CloudWatch is a monitoring and observability service provided by AWS. It helps you collect, access, and analyze metrics, logs, 
+and events from various AWS resources and applications in real time.
 
 ✅ Key Uses of CloudWatch:
 Monitor AWS Resources:
@@ -1830,7 +1831,8 @@ Automated Actions: Based on alarms, you can trigger actions like:
 ############################################
 ✅ What is AWS Elastic Beanstalk?
 ############################################
-AWS Elastic Beanstalk is a fully managed Platform-as-a-Service (PaaS) that allows you to deploy, manage, and scale web applications quickly — without worrying about infrastructure setup.
+AWS Elastic Beanstalk is a fully managed Platform-as-a-Service (PaaS) that allows you to deploy, manage, and scale web applications quickly — 
+without worrying about infrastructure setup.
 
 🔧 What Does Elastic Beanstalk Do?
 -------------------------------------------
@@ -1869,7 +1871,8 @@ b. Scope: It allows Elastic Beanstalk to create and manage AWS resources (like E
 EC2 Instance Profile Role (Compute Role):
 -------------------------------------------------------------
 
-Purpose: This role is assigned to the EC2 instances running in your Elastic Beanstalk environment. It allows those EC2 instances to interact with other a. AWS services that your Spring Boot application may need, like accessing an S3 bucket, reading from an RDS database, or writing logs to CloudWatch.
+Purpose: This role is assigned to the EC2 instances running in your Elastic Beanstalk environment. It allows those EC2 instances to interact with other a. 
+AWS services that your Spring Boot application may need, like accessing an S3 bucket, reading from an RDS database, or writing logs to CloudWatch.
 
 b. Scope: It is specifically for granting permissions to EC2 instances so they can interact with AWS resources while the Spring Boot application is running.
 
@@ -1970,6 +1973,8 @@ b. Your VPC is like your own private data center within AWS.
 c. No other company can see or access your resources — unless you explicitly allow it.
 d. VPC is a free Service in AWS
 
+HOW MANY VPC Cn we create (MAX) for a region ?
+5 but can be increase through AWS Support.
 
 ############################################################################
 
@@ -1980,21 +1985,24 @@ b. There is no networking layer, so the instance can’t talk to:
 	1. The internet 🌐
 	2. Other services like databases, other EC2s, etc.
 
----------------------------------------------
+---------------------------- -----------------
 
 ###############################
 💡 Key Concepts of VPC:
 ###############################
 🌐 What is an IP Address?
 -----------------------------
-An IP Address (Internet Protocol Address) is a unique identifier for a device on a network (like a computer, phone, server, etc.). It's like a postal address — used to send and receive data between devices.
-
+An IP Address (Internet Protocol Address) is a unique identifier for a device on a network (like a computer, phone, server, etc.).
+It's like a postal address — used to send and receive data between devices.
+Any device which needs to connect with another device over the network , a unique identity is needed which is IP Adderss.
 🧩 Types of IP Addresses
 ------------------------------
 1. IPv4 (Internet Protocol version 4)
 a. Format: xxx.xxx.xxx.xxx (e.g., 192.168.1.1)
 b. 32-bit address → Around 4.3 billion unique addresses
-c. It is divided inot 4 octets
+c. It is divided inot 4 octets each 8 bits.
+d. series of 4 decimal no. separated by periods , ranging from 0 to 255
+e. Ipv4 are now out of numbers thats why IPv6 introduced
 
 Note: Most widely used
 
@@ -2003,17 +2011,24 @@ Note: Most widely used
 a. Format: xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx(eg.  fe80::c1a2:739b:9d8e:b9e2%14)
 b. 128-bit address → Massive number of addresses
 c. Created due to shortage of IPv4 addresses
+d. It is divided inot 8 octets
+e. contains alpha also so no worry about the no.
 
+.................................................................................................
+Within the same network if 2 servers are connected then they need private IP address to communicate with each other.
 Note: Use ipconfig in your cmd to see ip details of your machine
+
+📏 What is VPC Sizing?
+---------------------------------
+VPC sizing means choosing the IP address range (CIDR block) for your VPC that fits your current and future needs for AWS resources (EC2, RDS, etc.)
+within that network.
+
 
 📚 What is CIDR?
 ----------------------------
 -> CIDR stands for Classless Inter-Domain Routing.
 -> It’s a method for reserving  IP addresses range for a VPC for future allocation to resource for communication between them
-
-📏 What is VPC Sizing?
----------------------------------
-VPC sizing means choosing the IP address range (CIDR block) for your VPC that fits your current and future needs for AWS resources (EC2, RDS, etc.) within that network.
+-> For 1 vpc there are 5 IPv4 and 1 IPv6
 
 🧮 CIDR Calculations Explained
 ----------------------------------
@@ -2025,12 +2040,13 @@ Example 2: 10.0.0.0/24------>2^(32-24)----->2^8------->256
 🌐 What is a Subnet?
 --------------------------------
 A subnet (short for subnetwork) is a smaller network segment created by dividing a larger network (like a VPC) into multiple, logically separated pieces.
+allows us to organised and isolated tbe resources based on their function
 
 
 What is Route Table?
 ---------------------------
 A route table in a VPC is like the traffic police or traffic controller directing where each packet of data (like a vehicle) should go next:
-
+* It defines how traffic should be routed within the VPC and to/from external network
 It looks at the destination (where the data wants to go).
 
 It tells it which “road” or “route” to take (like sending cars to the highway, local streets, or a tunnel).
@@ -2038,13 +2054,14 @@ It tells it which “road” or “route” to take (like sending cars to the hi
 Without it, the data wouldn’t know how to reach its destination, just like cars without traffic rules would cause chaos.
 
 So yes, the route table manages and controls the flow of network traffic 
-
+-> for 1 VPC  , there can be 200 RT
 Note:
 Each subnet must be associated with a route table. However, traffic within the same subnet does not require routing via the route table—instances communicate directly. Route tables are used to route traffic between subnets within a VPC, between VPCs, and from subnets to outside networks
 
 Public Subnet
 ------------------
 A public subnet is a subnet that has a route to the internet via an Internet Gateway (IGW).
+If an internet is associated with a rount table for a subnet then subnet is pub subnet
 
 Instances (like EC2 servers) in a public subnet can directly communicate with the internet if they have a public IP address.
 
@@ -2069,11 +2086,14 @@ It enables instances in your VPC to:
 Send traffic to the internet
 
 Receive traffic from the internet
+allow inbound and outbound traffic 
 
-
+For one VPC only 1 IGW is ALLOW
 
 🔁 What is a NAT Gateway?
 ------------------------------------
 NAT Gateway stands for Network Address Translation Gateway.
 
 It allows instances in a private subnet to access the internet, but prevents the internet from initiating connections back to those instances.
+Allows only outbound traffic.....
+Why Outbound traffic?.............."some application needs update and for this we have to allow outbound traffic"
