@@ -2102,11 +2102,27 @@ Why Outbound traffic?.............."some application needs update and for this w
 2.Create route tables i.e private and public 
 3.Create SubNet i.e private and public
 4.Attach route tables to SubNets
+5.Attach RT to SubNet through subnet association
 5.Create InternetGateway and attach to VPC
 6.Attach IGW to public Route Table.
 
 
+## VPC PEERING
 
+process of establishing the network connection b/w two VPCs in same region or diff region
+
+STEPS:
+1. Create peering of VPCs
+2. Allow tarffic b/w the two VPCs ....... 
+3. For this we have to go in Route tables and configure the routes 
+4. Create Two EC2 instance one with vpc and one with def
+5. We have to also allow the receiving EC2 instance security group to configure the private Ip address of sender ec2 
+
+
+D/B NACL and SecurityGroup?
+
+SG applies at resource level(EC2) etc...
+NACL at subNets level
 
 
 
