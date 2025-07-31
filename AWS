@@ -1375,14 +1375,88 @@ To let you store data cost-effectively by selecting the right storage class base
 | Old logs, less frequent restore          | S3 Glacier Flexible Retrieval| ~$0.0036              | ~$0.01–$0.03 per GB (minutes to hours) |
 | Rare restore, long-term archival         | S3 Glacier Deep Archive     | ~$0.00099             | ~$0.02–$0.03 per GB (up to 12 hrs delay)|
 =============================================================================================================================================
+✅ AWS Elastic File System (EFS)
+Amazon EFS is a fully managed, scalable, shared file storage service for EC2 instances, allowing simultaneous access using the NFS protocol
+
+Feature / Use Case	🟢 Amazon S3	                                           🔵 Amazon EFS
+Storage Type	        Object Storage	                                           File Storage (NFS)
+Access Method	        API-based (HTTP/HTTPS)	                                   NFS mount (Linux file system interface)
+API Access	        ✅ Yes — via REST API/SDK (Java, Python, etc.)	           ❌ No direct API, accessed via file mount only
+Access URL(after upload)✅ Returns a public/private URL for access	           ❌ No URL — accessed only via mounted path
+Use in Web Projects	✅ Best for uploading user content like resumes,	   ❌ Not suitable for exposing user files via URL
+                             images, videos
+
+Large File Support	✅ Optimized for large files (multi-part upload)	   ⚠️ Handles large files but not as optimized as S3
+Cost Efficiency	        ✅ Cheaper — pay per GB stored	❌ More expensive — 
+                          pay per GB + throughput
+
+Mountable?	        ❌ Not mountable	                                    ✅ Yes — via NFS
+
+🟢 Use Amazon S3 when:
+You want to upload/download files via web or mobile apps.
+
+Need URLs to access the files.
+
+You’re storing user uploads, images, documents, videos, backups.
+
+You want a cost-effective, scalable solution with public/private access.
+
+🔵 Use Amazon EFS when:
+You need a shared file system mounted across multiple EC2 instances.
+
+You're running legacy apps or Linux tools that need a local file system.
+
+You need POSIX-compliant access (e.g., permissions, directory structure).
+
+When we want to use same configuration file for multiple instance 
+
+⚙️ Step-by-Step Setup
+🔹 Step 1: Create EFS
+AWS Console → EFS → Create file system.
+
+Select your VPC and Availability Zones.
+
+Then File System will be created with ID (e.g., fs-xxxxxxx).
+
+🔹 Step 2: Launch EC2 Instances
+Launch 2 EC2 instances (Amazon Linux).
+
+Ensure they are in the same VPC and subnet.
+
+🔹 Step 3: Configure Security Group
+Allow inbound TCP on port 2049 (NFS).
+
+Apply the same SG to EC2 and EFS mount target.
+
+💻 Mount EFS on EC2 Instances
+Step 1: Install EFS Utils
+-> sudo yum install -y amazon-efs-utils
+
+Step 2: Create Mount Directory
+-> sudo mkdir dir
+
+Step 3: Mount the EFS
+sudo mount -t efs -o tls fs-xxxxxxx:/ dir
+
+Step 4: Verify & Use/create any text or yml file here
+sudo touch config.yaml  or sudo touch A.txt   # or any other file
+
+Now, the file is accessible and editable from any EC2 instance where the same EFS is mounted.
+
+✅ Key Benefits
+Centralized Management: One copy of config files.
+
+Real-Time Sync: Changes reflect instantly across EC2s.
+
+Highly Available: Durable across AZs.
+
+Scalable & Serverless: No manual capacity management.
 
 
+**NFS
 
-
-
-
-
-
+NFS stands for Network File System.
+protocol that allows a computer to access files over a network as if they were stored on its local disk.
 
 
 
