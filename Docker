@@ -93,6 +93,8 @@ _______________________________________________________
 docker pull : download docker image from hub
 
 	docker pull [image-name]
+
+docker image : to see it conatin any img or not
 	
 docker run : run docker image - this will create container (Isolated Enviroment to run docker image- This is not a OSs)
 
@@ -133,15 +135,18 @@ ________________________________________________________________
 
 run Docker Image from docker hub using the command
 
-Docker run [image-name] - This command when executed we will not be able to access our container in browser because it requires port mapping.
+Docker run [image-name] - This command when executed we will not be able to access our container in browser because it requires 
+port mapping.
 
-As Container is running inside linux VM. We will have to map linux vm (host port) to container(Container port) this is called as port mapping. To do this perform the following
+As Container is running inside linux VM. We will have to map linux vm (host port) to container(Container port) this is called as
+port mapping. To do this perform the following
 
 Docker run -p host-port:container-port [image-name]
 
 Example: docker run -p 9090:9090 [image-name]
 
 Example: docker run -d -p 9090:9090 [image-name] will run the cintainer in background
+"docker run -d -p 9090:9090 psait/pankajsiracademy:latest"
 
 Now you can access our application using the url http://public-ip:host-post(linux-vm)
 
