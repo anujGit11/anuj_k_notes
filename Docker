@@ -1,6 +1,7 @@
 Docker
 _____________
 
+-> Provides portability to run aplication on different servers.
 -> Resolves Compatibility problem using containerization
 -> Docker will help us to install our software on different server without worrying about compatibility issue
 -> To deploy same application on multiple servers for load balancing we need not manually install technology stack (like Angular 18v, java 17V etc) manually one by one if docker is not used
@@ -223,11 +224,14 @@ ________________________________________________________________________________
 How to create docker file? Create Docker Image? push that to docker hub?
 ______________________________________________________________________________
 
-In order to build a docker file as a developer you should know when to use the following keywords.Dockerfile instructions (FROM, CMD, ADD, etc.) are case-sensitive and must be written in uppercase.
+In order to build a docker file as a developer you should know when to use the following keywords.Dockerfile instructions
+(FROM, CMD, ADD, etc.) are case-sensitive and must be written in uppercase.
 
 1. FROM
 ___________
-->The FROM instruction in a Dockerfile specifies the base image for your container or it will be used to specify what softwares should be downloaded to run our app. It is always the first instruction in a Dockerfile because it defines the environment where your application will run
+->The FROM instruction in a Dockerfile specifies the base image for your container or it will be used to specify what softwares 
+should be downloaded to run our app. It is always the first instruction in a Dockerfile because it defines the environment where your 
+application will run
 
 FROM <image>:<tag>
 
@@ -273,12 +277,16 @@ ________________________________________
 
 Step 1: vi dockerfile
 
+then press i for INSERT and write below commands
+
 FROM openjdk:17
 MAINTAINER Pankaj
 RUN echo 'run-1'
-RUN echo 'run-2
+RUN echo 'run-2'
 CMD echo 'cmd-1'
 CMD echo 'cmd-2'
+
+After this press Esc and write :wq for save 
 
 Step 2: create docker image using the command
 -> docker build -t pankajsiracademy/image1 .
@@ -348,7 +356,8 @@ CMD "java -jar your-app.jar"
 9. EXPOSE
 _____________________
 
--> EXPOSE command is used to specify application is running on which PORT number. Using this you cannot change the port number of application. You are just mentioning that our application is running on the port number 9090.
+-> EXPOSE command is used to specify application is running on which PORT number. Using this you cannot change the port number of 
+   application. You are just mentioning that our application is running on the port number 9090.
 
 -> If our application is running on port number 8081 you are mentioning expose 9090 then it is wrong. 
 
@@ -387,6 +396,7 @@ Step 2: Note (Install maven and git in linux VM first)
 
 3) Create docker image and check that: 
 -> docker build -t psait/pankajsiracademy:<tag> .
+-> docker build -t bit123crypto/docker:testing-v1 .
 (
 Here 
 -> psait is username
@@ -400,6 +410,7 @@ Here
 -> docker images 
 
 4) run docker container: docker run -d -p 8080:8080 --name psa psait/your-app
+docker run -d -p 8080:8080 bit123crypto/docker:testing-v1
 
 5)See the image is running or not: docker ps
 
@@ -419,3 +430,4 @@ Enter password
 
 -> push docker image
 docker push psait/pankajsiracademy:<tag>
+docker push bit123crypto/docker:testing-v1
