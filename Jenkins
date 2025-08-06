@@ -11,13 +11,15 @@ Build and deployment process
 ----------------------------------
 
 
-The above steps where performed by us manually in our docker classes. Question is how can we automate these tasks. Can we do these steps manually to deploy our application in different environments like dev, QA, staging, UAT, production etc?
+The above steps where performed by us manually in our docker classes. Question is how can we automate these tasks.
+Can we do these steps manually to deploy our application in different environments like dev, QA, staging, UAT, production etc?
 
 #############
 Jenkins CI/CD
 #############
 
--> Jenkins is a popular open-source automation server used for Continuous Integration (CI) and Continuous Deployment (CD) in software development. It helps automate the building, testing, and deployment of applications.
+-> Jenkins is a popular open-source automation server used for Continuous Integration (CI) and Continuous Deployment (CD) in software 
+  development. It helps automate the building, testing, and deployment of applications.
 
 -> Automation – Jenkins automates repetitive tasks like code compilation, testing, and deployment
 
@@ -39,7 +41,8 @@ ____________________________
 
 Jenkins Declarative Pipeline Explained
 
-A Jenkins Declarative Pipeline is a structured way to define a CI/CD pipeline using Groovy-based syntax. Let's break down your pipeline step by step.
+A Jenkins Declarative Pipeline is a structured way to define a CI/CD pipeline using Groovy-based syntax. Let's break down your pipeline
+step by step.
 
 Pipeline Structure:
 
