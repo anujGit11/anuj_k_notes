@@ -298,9 +298,49 @@ pipeline {
 
                     # Run the new container
                     docker run -d -p 9090:8080 --name psait psait/test1
+
+                    docker run -d -p 9090:8080 --name bit123 bit123crypto/docker
                     '''
                 }
             }
         }
+    }
+}
+
+
+
+
+CREATED BY ME 
+
+pipeline {
+    agent any
+    tools {
+    maven 'maven-3.9.11'
+    }    
+    
+
+    stages {
+        stage('git clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/anujGit11/docker-anuj.git'
+            }
+        }
+        stage('maven execute') {
+            steps {
+                sh 'mvn clean test package'
+            }
+        }
+        stage('Docker image') {
+            steps{
+                sh 'docker build -t bit123crypto/docker .'
+            }
+        }
+        stage('deployment'){
+            steps{
+                sh 'docker run -d -p 9090:8080 --name bit123 bit123crypto/docker'
+
+            }
+        }
+        
     }
 }
