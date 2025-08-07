@@ -594,7 +594,7 @@ What are name spaces in k8s?
 ------------------
 Example:
 -----------------
-
+kubeclt create namespace backend-ns-1
 database-ns = all database-related stuff
 
 backend-ns = for backend applications
@@ -715,6 +715,10 @@ Provides self-healing — if a Pod crashes or is deleted, RC will recreate it.
 
 manifest yml file
 
+
+kubectl apply -f rc.yml
+
+########################################################
 ---
 apiVersion: v1
 kind: ReplicationController
@@ -723,12 +727,12 @@ metadata:
 spec:
  replicas: 3
  selector:
-  app: dempapp
+  app: demoapp
  template:
   metadata:
    name: testpod
    labels: 
-    app: dempapp
+    app: demoapp
   spec:
    containers:
     - name: webappcontainer
@@ -736,10 +740,6 @@ spec:
       ports:
       - containerPort: 9090
 ...
-
-kubectl apply -f rc.yml
-
-########################################################
 
 kubectl get all
 
@@ -749,7 +749,7 @@ kubectl delete pod <pod-name>
 
 kubectl get pods
 
-kubectl scale rc dempapp --replicas=5
+kubectl scale rc webapp --replicas=5   (incresase pod to 5)
 
 kubectl scale rc dempapp --replicas=1  Explain in short
 
