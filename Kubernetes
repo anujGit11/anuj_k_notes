@@ -472,6 +472,7 @@ Note: Save above content in .yml file
 
 # execute manifest yml
 kubectl apply -f <manifest-yml-file>
+kubectl apply -f pod.yml
 
 # check pods
 kubectl get pods
@@ -542,6 +543,8 @@ Test this in same local network
 
 curl http://<mini-kube-ip>:3080/
 curl http://192.168.49.2:30080/
+
+curl cmmd : will fire the http request and get the http response....
 
 
 
