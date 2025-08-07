@@ -336,14 +336,20 @@ logging.file.name=app.log
 ELK (Elasticsearch, Logstash, Kibana)
 ############################################
 
-ELK (Elasticsearch, Logstash, Kibana) is a powerful stack used for log analysis, monitoring, and visualization in real-time. It helps in debugging, performance monitoring, and security auditing for applications, including Spring Boot apps.
+ELK (Elasticsearch, Logstash, Kibana) is a powerful stack used for log analysis, monitoring, and visualization in real-time. It helps in debugging, performance monitoring, and 
+security auditing for applications, including Spring Boot apps.
 
-a. Logstash -  A data processing pipeline that collects, processes, and forwards logs to Elasticsearch.
+a. Logstash -  A data processing pipeline that collects, processes, and forwards logs to Elasticsearch. 
+
+   ** Collects, processes & sends data **
 
 b. Elasticsearch - A search and analytics engine that stores logs and allows querying. Provides fast retrieval of logs with filtering capabilities.
 
+   *** Stores & indexes data *
+
 c. Kibana - A visualization tool for logs stored in Elasticsearch. Helps create dashboards, graphs, and alerts for log monitoring.
 
+   ** Visualizes data & creates dashboards **
 ###############
 ELK Setup - 
 ###############
@@ -369,6 +375,15 @@ Steps to download logstash
 
 Step 1: https://www.elastic.co/downloads/logstash
 Step 2: Start the service - Run bin/logstash -f logstash.conf
+
+*****************************************************************************
+Spring Boot App logs to file using SLF4J + Logback.
+
+Filebeat reads the log file and forwards to Logstash.
+
+Logstash parses logs and forwards to Elasticsearch.
+
+Kibana shows a dashboard with error rates, response time, etc.
 
 ----------------------------------------------------------------------------------------------------------
 
