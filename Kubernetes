@@ -108,6 +108,10 @@ Together, Docker & Kubernetes enable modern cloud-native application deployment�
 Kubernetes (K8s) Architecture - Explained in Detail
 #########################################################
 
+With help of KubeCtl(cmmnds/yaml) we give input to Contrl Panel
+inputs will be receive by ApiServer further it stores details in ETCD, Scheduler will read the ETCD and interacts with
+Kubelet(present working mode). Controlller Manager will take care of clusters
+
 1) Control Plane (Master Node/Control Node)
 -> The control plane is responsible for managing the Kubernetes cluster. It includes the following components:
 
@@ -291,7 +295,9 @@ Kubernetes supports auto-scaling. You can scale Pods manually or automatically u
 🚀 Kubernetes Services
 ###############################
 
--> A Kubernetes Service is used to expose a group of Pods so that they can be accessed reliably. Since Pods can be created and destroyed at any time (with changing IPs), a Service gives them a stable network identity.
+
+-> A Kubernetes Service is used to expose a group of Pods so that they can be accessed reliably. Since Pods can be created and destroyed at any time (with changing IPs), 
+  a Service gives them a stable network identity.
 
 ---------------------------
 🧭 Why Do We Use Services?
@@ -342,12 +348,14 @@ Note: 🛑 Never rely on Pod IPs to access an application.
 ----------------
 -> Internal services such as databases, backend APIs, authentication services, etc.
 
-Example: You don’t want to expose a database Pod to the internet, so you use a ClusterIP service to allow access only from other internal Pods.
+Example: You don’t want to expose a database Pod to the internet, so you use a ClusterIP service to allow access only from other 
+internal Pods.
 
 ----------------------------------------------------
 🌐 What is a NodePort Service in Kubernetes?
 ----------------------------------------------------
--> A NodePort service is a type of Kubernetes Service that exposes your Pods outside the cluster using a port on each worker node (called a "NodePort").
+-> A NodePort service is a type of Kubernetes Service that exposes your Pods outside the cluster using a port on each worker node
+(called a "NodePort").
 
 🧭 Why Use NodePort?
 ------------------------------------
@@ -366,7 +374,8 @@ Note: Here all traffic is routed to one worker node. Means load balancing cannot
 🌐 What is a LoadBalancer Service in Kubernetes?
 -----------------------------------------------------
 
--> It not only provides external access to your app but also handles automatic traffic distribution across the backend Pods running on different worker nodes.
+-> It not only provides external access to your app but also handles automatic traffic distribution across the backend Pods running
+   on different worker nodes.
 
 
 ##############################################
