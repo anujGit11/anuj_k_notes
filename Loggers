@@ -341,15 +341,30 @@ security auditing for applications, including Spring Boot apps.
 
 a. Logstash -  A data processing pipeline that collects, processes, and forwards logs to Elasticsearch. 
 
-   ** Collects, processes & sends data **
+   ** Collects, processes logs from log file present in app  & sends data to ElasticSearch **
 
 b. Elasticsearch - A search and analytics engine that stores logs and allows querying. Provides fast retrieval of logs with filtering capabilities.
 
-   *** Stores & indexes data *
+   ***Used to store logs processed by Logstash or other tools. *
 
 c. Kibana - A visualization tool for logs stored in Elasticsearch. Helps create dashboards, graphs, and alerts for log monitoring.
 
    ** Visualizes data & creates dashboards **
+
+
+     **Use Cases of ELK**
+
+1.Application performance monitoring
+
+2.Centralized logging (microservices, distributed systems)
+
+3.R.eal-time alerting and dashboards
+
+4.Security analytics (SIEM)
+
+5.Troubleshooting and debugging**
+
+
 ###############
 ELK Setup - 
 ###############
