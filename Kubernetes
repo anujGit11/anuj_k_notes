@@ -874,7 +874,8 @@ Rollbacks	                 ❌ No	                    ✅ Yes
 YAML Kind	                 ReplicaSet	                Deployment
 Use in Real World	         Rare	                      Very Common
 
-A Deployment in Kubernetes is one of the most recommended and used resources for managing Pod lifecycles. It ensures reliable application deployment with features like zero downtime, auto-scaling, rolling updates, and rollback capabilities.
+A Deployment in Kubernetes is one of the most recommended and used resources for managing Pod lifecycles. It ensures reliable application deployment with features
+like zero downtime, auto-scaling, rolling updates, and rollback capabilities.
 
 🎯 Key Advantages of Using Deployments
 Zero Downtime: Deployments ensure high availability by using strategies like rolling updates. Even when pods are being updated, the service remains available to users.
