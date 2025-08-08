@@ -397,7 +397,7 @@ spec:                          # Specification of what the resource should do
 🧪 Example: Pod Manifest YAML
 Let’s look at a simple Pod definition:
 -------------------------------
-
+[AKMS]
 ---
 apiVersion: v1
 kind: Pod
