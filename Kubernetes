@@ -174,9 +174,10 @@ A Kubernetes Cluster = Control Plane + Worker Nodes + Pods + Resources + Network
 In this setup, we manually install and manage Kubernetes on our own infrastructure.
 
 a) MiniKube (Single Node)
--> Runs a single-node cluster on a local machine.
+-> Runs a single-node cluster on a local machine.(the control plane and worker components run on the same node).
 -> Best for learning and practicing Kubernetes concepts.
 -> Not suitable for production as it lacks high availability and scalability.
+
 
 b) Kubeadm (Multi-Node)
 -> A tool for setting up a multi-node cluster manually.
@@ -282,13 +283,24 @@ c. Environment variables, etc.
 
 
 5. "Create multiple PODS."
-The same image (e.g., myapp:latest) can be used to create many Pods. This is how you scale your application—running multiple copies (Pods) to handle more traffic.
+The same image (e.g., myapp:latest) can be used to create many Pods. This is how you scale your application—running multiple copies 
+(Pods) to handle more traffic.Example: Running 5 replicas of your backend API.
 
 6. "If we run application with multiple pods then Load Balancing can be performed resulting in 99.9% uptime of the application."
-High Availability: If one Pod crashes, others are still running, so your app stays available.Load Balancing: Kubernetes distributes traffic across Pods using a Service (like a load balancer).
+High Availability: If one Pod crashes, others are still running, so your app stays available.Load Balancing: Kubernetes distributes 
+traffic across Pods using a Service (like a load balancer).
+
+** If one Pod fails, Kubernetes replaces it automatically.
+** Services distribute incoming traffic across all healthy Pods.
 
 7. "PODS count will be increased and decreased based on the demand (scalability)."
-Kubernetes supports auto-scaling. You can scale Pods manually or automatically using a Horizontal Pod Autoscaler (HPA). Based on CPU/memory usage or custom metrics, Kubernetes will increase/decrease the number of Pods.
+Kubernetes supports auto-scaling. You can scale Pods manually or automatically using a Horizontal Pod Autoscaler (HPA). Based on 
+CPU/memory usage or custom metrics, Kubernetes will increase/decrease the number of Pods.
+
+** We  can scale Pods manually (kubectl scale) or automatically via Horizontal Pod Autoscaler (HPA).
+** Scaling is based on metrics like CPU usage, memory usage, or custom metrics.
+
+
 
 
 ###############################
@@ -296,8 +308,8 @@ Kubernetes supports auto-scaling. You can scale Pods manually or automatically u
 ###############################
 
 
--> A Kubernetes Service is used to expose a group of Pods so that they can be accessed reliably. Since Pods can be created and destroyed at any time (with changing IPs), 
-  a Service gives them a stable network identity.
+-> A Kubernetes Service is used to expose a group of Pods so that they can be accessed reliably. Since Pods can be created and 
+  destroyed at any time (with changing IPs), a Service gives them a stable network identity.
 
 ---------------------------
 🧭 Why Do We Use Services?
@@ -333,12 +345,13 @@ Note: 🛑 Never rely on Pod IPs to access an application.
 
 -> A ClusterIP Service groups multiple Pods  and assigns them a single static IP.
 
+*This Service maintains a fixed virtual IP (ClusterIP) that routes traffic to all matching Pods.
+
 -> This static IP allows other components inside the cluster to access the group of Pods reliably, even when individual Pods change.
 
 ---------------------
 🚫 Access Scope:
 ---------------------
-
 -> Only accessible within the Kubernetes cluster.
 
 -> Not reachable from the outside world (internet or external clients).
@@ -347,7 +360,8 @@ Note: 🛑 Never rely on Pod IPs to access an application.
 💡 Use Case:
 ----------------
 -> Internal services such as databases, backend APIs, authentication services, etc.
-
+** Communication between microservices in the same cluster.
+** Backend service accessed by a frontend service.
 Example: You don’t want to expose a database Pod to the internet, so you use a ClusterIP service to allow access only from other 
 internal Pods.
 
@@ -355,7 +369,11 @@ internal Pods.
 🌐 What is a NodePort Service in Kubernetes?
 ----------------------------------------------------
 -> A NodePort service is a type of Kubernetes Service that exposes your Pods outside the cluster using a port on each worker node
-(called a "NodePort").
+   (called a "NodePort").
+
+** NodePort extends access to external clients by mapping a port on every node to the target Pods.
+
+
 
 🧭 Why Use NodePort?
 ------------------------------------
@@ -550,8 +568,10 @@ curl cmmd : will fire the http request and get the http response....
 
 Part	Meaning
 curl	A tool to make HTTP requests from the command line. It's often used to test whether a URL is reachable and what it returns.
-http://192.168.49.2	This is the IP address of the Minikube VM. It's the entry point into your Kubernetes cluster from your host machine. You found this IP using minikube ip.
-:30080	This is the NodePort exposed by your Kubernetes service (testpod-service). It forwards external requests to the internal Pod’s port (8080 in your case).
+http://192.168.49.2	This is the IP address of the Minikube VM. It's the entry point into your Kubernetes cluster from your host machine.
+You found this IP using minikube ip.
+:30080	This is the NodePort exposed by your Kubernetes service (testpod-service). 
+It forwards external requests to the internal Pod’s port (8080 in your case).
 /	This is the path of the URL. Since it's just a /, it hits the root endpoint of your Spring Boot app.
 
 
@@ -693,7 +713,8 @@ spec:
 k8S Resources
 ########################################
 
--> When you create a Pod directly using kind: Pod, Kubernetes does not manage its lifecycle — if it crashes or is deleted, it's gone forever unless recreated manually.
+-> When you create a Pod directly using kind: Pod, Kubernetes does not manage its lifecycle — if it crashes or is deleted, 
+   it's gone forever unless recreated manually.
 
 -> K8S resources manages POD lifecycle
 
@@ -824,7 +845,11 @@ spec:
           ports:
             - containerPort: 80
 -----------------------------------------------------------------------------------------------------
+**selector → Tells Kubernetes which existing Pods this ReplicaSet should manage.
 
+**template → Defines the blueprint for creating new Pods if they don’t already exist or if more replicas are needed.
+
+**template.metadata.labels must match selector.matchLabels, otherwise the ReplicaSet will create Pods but not manage them (leading to chaos).
 
 replica-set.yml for practicals
 ------------------
@@ -842,7 +867,7 @@ spec:
   template:
     metadata:
       labels:
-        app: dempapp
+        app: dempapp      # Must match selector
     spec:
       containers:
         - name: webappcontainer
@@ -874,15 +899,19 @@ Rollbacks	                 ❌ No	                    ✅ Yes
 YAML Kind	                 ReplicaSet	                Deployment
 Use in Real World	         Rare	                      Very Common
 
-A Deployment in Kubernetes is one of the most recommended and used resources for managing Pod lifecycles. It ensures reliable application deployment with features
-like zero downtime, auto-scaling, rolling updates, and rollback capabilities.
+A Deployment in Kubernetes is one of the most recommended and used resources for managing Pod lifecycles. It ensures reliable application
+deployment with features like zero downtime, auto-scaling, rolling updates, and rollback capabilities.
 
 🎯 Key Advantages of Using Deployments
-Zero Downtime: Deployments ensure high availability by using strategies like rolling updates. Even when pods are being updated, the service remains available to users.
+Zero Downtime: Deployments ensure high availability by using strategies like rolling updates.
+Even when pods are being updated, the service remains available to users.
 
-Auto Scaling: With Kubernetes Horizontal Pod Autoscaler, you can automatically scale your Pods based on CPU or memory usage (or other custom metrics).
+Auto Scaling: With Kubernetes Horizontal Pod Autoscaler, you can automatically scale your Pods based on CPU or memory usage 
+(or other custom metrics).
 
-Rolling Update & Rollback: Kubernetes allows rolling updates, which means it will gradually update Pods one by one, ensuring the application remains available throughout the process. If something goes wrong during the update, you can rollback to a previous stable version.
+Rolling Update & Rollback: Kubernetes allows rolling updates, which means it will gradually update Pods one by one, ensuring the 
+application remains available throughout the process. If something goes wrong during the update, you can rollback to a previous stable 
+version.
 
 👨‍💻 When to Choose Which Strategy?
 Use RollingUpdate:
