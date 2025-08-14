@@ -501,7 +501,7 @@ Private Key (.pem): You download this. Keep it safe — you’ll need it to acce
 A Security Group acts as a virtual firewall for your instance. You must allow necessary traffic by adding inbound rules:
 
 Protocol	Port	Purpose
-RDP	3389	For Windows GUI access
+RDP	3389	For Windows GUI access 
 SSH	22	For Linux terminal access
 HTTP	80	For web traffic
 HTTPS	443	For secure web traffic
