@@ -227,7 +227,8 @@ DigitalOcean		Droplets
 
 ⚙️ What is PaaS (Platform as a Service)?
 #############################################
-PaaS is a cloud service model where the cloud provider gives you a ready-made platform (runtime, OS, web server, etc.) so that you can directly deploy and run your application — without worrying about setting up servers or infrastructure.
+PaaS is a cloud service model where the cloud provider gives you a ready-made platform (runtime, OS, web server, etc.) so that you can directly deploy and
+run your application — without worrying about setting up servers or infrastructure.
 
 🎯 Key Idea:
 You focus only on developing and deploying your code, and the cloud provider takes care of the platform and infrastructure underneath.
@@ -291,8 +292,7 @@ Microsoft Azure App Service	Deploy and scale web apps easily
 
 💻 What is SaaS (Software as a Service)?
 ####################################################
-SaaS is a cloud service model where the cloud provider gives you ready-to-use software, and you can access it through the internet — no installation, no setup, no servers.
-
+SaaS is a cloud service model where the .
 🎯 Key Idea:
 You simply use the software; everything else — like servers, updates, backups, and security — is managed by the cloud provider.
 
@@ -331,7 +331,8 @@ Salesforce			Customer relationship management (CRM)
 
 ☁️ What is AWS Cloud?
 ##############################
-AWS stands for Amazon Web Services – it’s the world's most popular cloud provider, offering a wide range of cloud computing services to individuals, startups, enterprises, and governments.
+AWS stands for Amazon Web Services – it’s the world's most popular cloud provider, offering a wide range of cloud computing services to individuals, startups,
+enterprises, and governments.
 
 🏁 Quick Facts
 ------------------------------
