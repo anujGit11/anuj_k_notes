@@ -1,5 +1,5 @@
 🔧 What is DevOps?
-##########################################
+##########################################https://github.com/anujGit11/anuj_k_notes/edit/main/AWS
 DevOps is a combination of two words:
 
 Dev = Development (writing code)
@@ -1021,7 +1021,8 @@ Open browser and type: http://<your-ec2-public-ip>
 
 🔄 What is a Load Balancer?
 #################################
-A Load Balancer is a system that automatically distributes incoming network or application traffic across multiple servers (or instances) to ensure no single server is overloaded with user request.
+A Load Balancer is a system that automatically distributes incoming network or application traffic across multiple servers (or instances) to ensure no single server 
+is overloaded with user request.
 
 ❌ The Problem Without Load Balancer (Single Server Issues):
 When you host your application on one server only, you face:
