@@ -895,7 +895,8 @@ A snapshot is just a stored image of a disk. You can't run it or mount it direct
 ########################################################
 ▶️ Step-by-Step Explanation:
 🧱 Step 1: Create a snapshot of the volume attached to 1a VM
-A snapshot is like a backup image of your EBS volume. It’s stored in S3 (behind the scenes), and snapshots are region-wide, meaning they can be used in any AZ within the same region.
+A snapshot is like a backup image of your EBS volume. It’s stored in S3 (behind the scenes), and snapshots are region-wide, meaning they can be used in any 
+AZ within the same region.
 
 🧱 Step 2: Create a new volume from that snapshot in the 1b AZ
 Now use that snapshot to create a new EBS volume, but place it in the 1b zone.
