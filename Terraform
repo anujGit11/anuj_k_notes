@@ -1,5 +1,5 @@
 Terraform
-
+-> Terraform is declarative way to define resources
 -> It is IAAC (Infrastructure As A Code)
 -> We we HCL as language
 -> Work with most of the Cloud platforms like AWS, GCP, Azure etc
@@ -20,6 +20,7 @@ blocks {
 ____________________________
 Practical Example Script:
 ____________________________
+** Provider : Here we mention specific platform or service (AWS)
 
 provider "aws" {
 	
@@ -28,6 +29,7 @@ provider "aws" {
 	secret_key = ""
 }
 
+** Resource : The actual infrastructure you want to create (EC2 instance, S3 bucket, VPC, etc.).
 resource "aws_instance" "vm_1" {
 	
 	ami = "ami-id"
@@ -42,7 +44,7 @@ ________________________
 Terraform Commands
 _________________________
 
-# terraform init - Downloads the required provider plugins.
+# terraform init - Downloads the required provider plugins and Initializes working directory.
 
 # terraform validate - Checks the configuration files for syntax and logical errors.
 
@@ -50,7 +52,10 @@ _________________________
 
 # terraform plan - Creates an execution plan to show what changes Terraform will make.
 
-# terraform apply or terraform apply --auto-approve - Applies the planned changes to create/update resources.
+# terraform apply or terraform apply --auto-approve - Applies the planned changes to create/update resources.  creates/updates/deletes resources as per plan.
+
+** After applying terraform apply state file is first created
+** State file is Json file , It contains metadata like resource IDs, IPs, timestamps, and dependencies.
 
 Note: --auto-approve skips the interactive approval step.
 
@@ -58,6 +63,7 @@ Note: --auto-approve skips the interactive approval step.
 
 Variables Creation Syntax:
 _____________________________________
+** Variable : Inputs to your Terraform configuration to avoid hardcoding
 
 variable "name" {
     description = "Describe the variable" (Optional)
