@@ -1775,7 +1775,8 @@ public class D {
 #####################
 ✅ What is AWS CLI?
 ########################
-AWS CLI is a tool that lets you interact with AWS services directly from the command line (your terminal or shell), using simple commands. It is officially developed by Amazon.
+AWS CLI is a tool that lets you interact with AWS services directly from the command line (your terminal or shell), using simple commands. It is 
+officially developed by Amazon.
 
 ✅ Key Features:
 -----------------------
