@@ -1,5 +1,8 @@
 Docker
 _____________
+Docker is a free and open-source containerization software that allows you to package applications along with their dependencies 
+into a single unit called a Docker Image. This image can run on any system that has Docker installed, making deployment easy and
+consistent across different environments.
 
 -> Provides portability to run aplication on different servers.
 -> Resolves Compatibility problem using containerization
