@@ -5,10 +5,10 @@ into a single unit called a Docker Image. This image can run on any system that 
 consistent across different environments.
 
 -> Provides portability to run aplication on different servers.
--> Resolves Compatibility problem using containerization
--> Docker will help us to install our software on different server without worrying about compatibility issue
--> To deploy same application on multiple servers for load balancing we need not manually install technology stack (like Angular 18v, java 17V etc) manually one by one if docker is not used
--> Software upgrades can be done easily on multiple machines using docker
+✅ Portability – Run the same application on any machine, regardless of OS configuration.
+✅ Dependency Management – Ensures that all required software (e.g., libraries, databases, and runtimes) is included within the image.
+✅ Fast Deployment – No need to manually install dependencies every time you set up a new environment.
+✅ Resource Efficiency – Uses fewer resources compared to traditional virtual machines.
 
 Note:
 ✔ Docker Engine acts as a bridge between the container and the host OS
@@ -324,7 +324,7 @@ Example-2 :  ENTRYPOINT ["java", "-jar", "app.jar"]
 
 6. COPY
 _________________
-
+ 
 --> COPY instruction will copy the files from source to destination.
 --> It is used to copy application code from host machine to container machine.
 --> Here Source means "HOST Machine" and Destination means "Container machine"
