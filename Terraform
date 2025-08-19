@@ -50,9 +50,10 @@ _________________________
 
 # terraform fmt - Formats the Terraform configuration files.
 
-# terraform plan - Creates an execution plan to show what changes Terraform will make.
+# terraform plan - Terraform reads your .tf files ,creates an execution plan to show what changes Terraform will make.
 
-# terraform apply or terraform apply --auto-approve - Applies the planned changes to create/update resources.  creates/updates/deletes resources as per plan.
+# terraform apply or terraform apply --auto-approve - Applies the planned changes to create/update resources. 
+creates/updates/deletes resources as per plan.Terraform calls the provider API (e.g., AWS API) to create the resource.
 
 ** After applying terraform apply state file is first created
 ** State file is Json file , It contains metadata like resource IDs, IPs, timestamps, and dependencies.
