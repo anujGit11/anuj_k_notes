@@ -294,7 +294,8 @@ Microsoft Azure App Service	Deploy and scale web apps easily
 ####################################################
 SaaS is a cloud service model where the .
 🎯 Key Idea:
-You simply use the software; everything else — like servers, updates, backups, and security — is managed by the cloud provider.
+You simply use the software; everything else — like servers, updates, backups, and security — is managed by the 
+cloud provider.
 
 ✅ What the cloud provider handles:
 ------------------------------------------
@@ -331,8 +332,8 @@ Salesforce			Customer relationship management (CRM)
 
 ☁️ What is AWS Cloud?
 ##############################
-AWS stands for Amazon Web Services – it’s the world's most popular cloud provider, offering a wide range of cloud computing services to individuals, startups,
-enterprises, and governments.
+AWS stands for Amazon Web Services – it’s the world's most popular cloud provider, offering a wide range of 
+cloud computing services to individuals, startups,enterprises, and governments.
 
 🏁 Quick Facts
 ------------------------------
@@ -419,7 +420,8 @@ SNS (Simple Notification Service)		Send email, SMS, push notifications automatic
 
 ☁️ Elastic Compute Cloud (EC2) - AWS Service
 ##############################################################
-EC2 is one of the most demanded services in AWS. It allows you to create virtual machines (VMs) in the AWS cloud, which are called EC2 instances.
+EC2 is one of the most demanded services in AWS. It allows you to create virtual machines (VMs) in the AWS cloud,
+which are called EC2 instances.
 
 ✅ Key Points about EC2:
 -----------------------------------------
@@ -427,7 +429,8 @@ What is an EC2 Instance?
 -------------------------------------------------
 EC2 Instance = Virtual Machine (VM) or Server (you can think of it as a computer that runs on the cloud).
 
-It’s resizable, meaning you can change the configuration of your EC2 instance (e.g., CPU, RAM) based on the demand (if your workload increases, you can scale up).
+It’s resizable, meaning you can change the configuration of your EC2 instance (e.g., CPU, RAM) based on 
+the demand (if your workload increases, you can scale up).
 
 Billing:
 --------------------------------------------
@@ -437,7 +440,8 @@ Minimum billing period is 1 hour. Even if you use it for less than 1 hour, you'l
 
 Example: If you run your EC2 instance for 15 minutes, you'll still be billed for 1 hour.
 
-Note: AWS offers free tier access for beginners, like the t2.micro/t3.micro instance, which allows 750 hours per month for one year.
+Note: AWS offers free tier access for beginners, like the t2.micro/t3.micro instance, which allows 750 hours per
+month for one year.
 
 Storage:
 --------------------------------------------------
@@ -495,10 +499,12 @@ Public Key: This stays with AWS. It is embedded into the EC2 instance during lau
 
 Private Key (.pem): You download this. Keep it safe — you’ll need it to access the instance.
 
-🔐 If you lose the .pem file, you cannot connect to your instance unless you've already added another user or created a new key pair and updated it manually.
+🔐 If you lose the .pem file, you cannot connect to your instance unless you've already added another user or 
+created a new key pair and updated it manually.
 
 2) Create Security Group and update Inbound Rules to allow traffic
-A Security Group acts as a virtual firewall for your instance. You must allow necessary traffic by adding inbound rules:
+A Security Group acts as a virtual firewall for your instance. You must allow necessary traffic by adding 
+inbound rules:
 
 Protocol	Port	Purpose
 RDP	3389	For Windows GUI access 
@@ -649,7 +655,8 @@ If you remove the EBS Root Volume, the EC2 instance will not work because there'
 -> You can only attach an EBS volume to an EC2 instance in the same AZ.
 
 📍 Example:
--> If your EC2 instance is in ap-south-1a (Mumbai), you can only attach EBS volumes in ap-south-1a, not in ap-south-1b or ap-south-1c.
+-> If your EC2 instance is in ap-south-1a (Mumbai), you can only attach EBS volumes in ap-south-1a,
+    not in ap-south-1b or ap-south-1c.
 
 #################################################################################################
 Types of EBS volumes, explaining them in simple terms along with their use cases and size limits:
@@ -809,10 +816,12 @@ $ sudo mount /dev/xvdb demo
 Now, check the files:
 $ ls -l demo
 
-You should see f1.txt and f2.txt in the demo directory, confirming the data was preserved even after detaching and reattaching the volume.
+You should see f1.txt and f2.txt in the demo directory, confirming the data was preserved even after
+detaching and reattaching the volume.
 
-we have to allow data to save in folder rather than directly into harddisk , even if we remove the HD the data still present inside folder
-
+we have to allow data to save in folder rather than directly into harddisk , even if we remove the HD the 
+data still present inside folder
+"Data on EBS volumes is persistent — even if you detach from one VM and attach to another, the data remains intact."
 
 *******************************************************************************
 
@@ -895,8 +904,8 @@ A snapshot is just a stored image of a disk. You can't run it or mount it direct
 ########################################################
 ▶️ Step-by-Step Explanation:
 🧱 Step 1: Create a snapshot of the volume attached to 1a VM
-A snapshot is like a backup image of your EBS volume. It’s stored in S3 (behind the scenes), and snapshots are region-wide, meaning they can be used in any 
-AZ within the same region.
+A snapshot is like a backup image of your EBS volume. It’s stored in S3 (behind the scenes), and snapshots are 
+region-wide, meaning they can be used in any AZ within the same region.
 
 🧱 Step 2: Create a new volume from that snapshot in the 1b AZ
 Now use that snapshot to create a new EBS volume, but place it in the 1b zone.
@@ -1021,8 +1030,8 @@ Open browser and type: http://<your-ec2-public-ip>
 
 🔄 What is a Load Balancer?
 #################################
-A Load Balancer is a system that automatically distributes incoming network or application traffic across multiple servers (or instances) to ensure no single server 
-is overloaded with user request.
+A Load Balancer is a system that automatically distributes incoming network or application traffic across 
+multiple servers (or instances) to ensure no single server is overloaded with user request.
 
 ❌ The Problem Without Load Balancer (Single Server Issues):
 When you host your application on one server only, you face:
@@ -1161,8 +1170,8 @@ AWS S3 (Simple Storage Service)
 ####################################
 ✅ What is S3?
 
-It is a storage service provided by Amazon Web Services (AWS) where you can store unlimited data (like files, images, videos, 
-backups, documents, etc.) safely in the cloud.
+It is a storage service provided by Amazon Web Services (AWS) where you can store unlimited data 
+(like files, images, videos, backups, documents, etc.) safely in the cloud.
 
 It can be accessed anytime, from anywhere via the internet.
 
@@ -1267,7 +1276,8 @@ c. You are transferring large files over long distances
 ##################################
 🔐 What is S3 Object Lock?
 ##################################
-S3 Object Lock is a feature that lets you prevent objects (files) from being deleted or modified for a fixed period or forever. It's used to protect critical data for compliance, backup, or legal reasons.
+S3 Object Lock is a feature that lets you prevent objects (files) from being deleted or modified for a 
+fixed period or forever. It's used to protect critical data for compliance, backup, or legal reasons.
 
 ==================================================================================
 | Feature                 | Description                                          |
@@ -1379,7 +1389,8 @@ To let you store data cost-effectively by selecting the right storage class base
 | Rare restore, long-term archival         | S3 Glacier Deep Archive     | ~$0.00099             | ~$0.02–$0.03 per GB (up to 12 hrs delay)|
 =============================================================================================================================================
 ✅ AWS Elastic File System (EFS)
-Amazon EFS is a fully managed, scalable, shared file storage service for EC2 instances, allowing simultaneous access using the NFS protocol
+Amazon EFS is a fully managed, scalable, shared file storage service for EC2 instances, allowing simultaneous
+access using the NFS protocol
 
 Feature / Use Case	🟢 Amazon S3	                                           🔵 Amazon EFS
 Storage Type	        Object Storage	                                           File Storage (NFS)
@@ -1472,7 +1483,8 @@ protocol that allows a computer to access files over a network as if they were s
 ✅ IAM (Identity and Access Management)
 ##################################################
 Definition:
-IAM is a free AWS service used to securely control access to AWS resources. It helps in managing users, groups, policies, and roles.
+IAM is a free AWS service used to securely control access to AWS resources. It helps in managing users, groups,
+policies, and roles.
 
 🔑 Types of AWS Accounts
 1. Root Account
@@ -1547,7 +1559,8 @@ Example:
 A policy can allow full access to S3, or read-only access to EC2.
 
 🧑‍🔧 IAM Roles
-Definition: Roles are similar to users but are not associated with a specific person. Instead, they are used by AWS services to perform actions.
+Definition: Roles are similar to users but are not associated with a specific person. Instead, 
+they are used by AWS services to perform actions.
 
 Use Case Example:
 
@@ -1585,7 +1598,8 @@ Topic	Description
 ##################################
 Relational Database Service
 ##################################
-It is a fully managed service provided by AWS that helps you set up, operate, and scale a relational database in the cloud.
+It is a fully managed service provided by AWS that helps you set up, operate, and scale a relational database in
+the cloud.
 
 Database Setup
 ------------------------------
@@ -1819,8 +1833,8 @@ Link to AWS Documention: https://awscli.amazonaws.com/v2/documentation/api/lates
 #################################
 ☁️ CloudWatch – Overview
 #################################
-Amazon CloudWatch is a monitoring and observability service provided by AWS. It helps you collect, access, and analyze metrics, logs, 
-and events from various AWS resources and applications in real time.
+Amazon CloudWatch is a monitoring and observability service provided by AWS. It helps you collect, access, and 
+analyze metrics, logs, and events from various AWS resources and applications in real time.
 
 ✅ Key Uses of CloudWatch:
 Monitor AWS Resources:
@@ -1964,8 +1978,9 @@ b. Scope: It allows Elastic Beanstalk to create and manage AWS resources (like E
 EC2 Instance Profile Role (Compute Role):
 -------------------------------------------------------------
 
-Purpose: This role is assigned to the EC2 instances running in your Elastic Beanstalk environment. It allows those EC2 instances to interact with other a. 
-AWS services that your Spring Boot application may need, like accessing an S3 bucket, reading from an RDS database, or writing logs to CloudWatch.
+Purpose: This role is assigned to the EC2 instances running in your Elastic Beanstalk environment. It allows 
+those EC2 instances to interact with other
+a. AWS services that your Spring Boot application may need, like accessing an S3 bucket, reading from an RDS database, or writing logs to CloudWatch.
 
 b. Scope: It is specifically for granting permissions to EC2 instances so they can interact with AWS resources while the Spring Boot application is running.
 
@@ -2061,7 +2076,8 @@ http://springboot-env.eba-xxxxxxx.us-east-1.elasticbeanstalk.com
 ###########################################################################
 VPC: In AWS (Amazon Web Services), VPC stands for Virtual Private Cloud.
 -----------------------------------------------------------------------
-a. Amazon VPC is a logically isolated virtual network that you create in the AWS cloud. It is your own private network space in AWS
+a. Amazon VPC is a logically isolated virtual network that you create in the AWS cloud. It is your own 
+private network space in AWS
 b. Your VPC is like your own private data center within AWS.
 c. No other company can see or access your resources — unless you explicitly allow it.
 d. VPC is a free Service in AWS
@@ -2108,19 +2124,22 @@ d. It is divided inot 8 octets
 e. contains alpha also so no worry about the no.
 
 .................................................................................................
-Within the same network if 2 servers are connected then they need private IP address to communicate with each other.
+Within the same network if 2 servers are connected then they need private IP address to communicate with 
+each other.
 Note: Use ipconfig in your cmd to see ip details of your machine
 
 📏 What is VPC Sizing?
 ---------------------------------
-VPC sizing means choosing the IP address range (CIDR block) for your VPC that fits your current and future needs for AWS resources (EC2, RDS, etc.)
+VPC sizing means choosing the IP address range (CIDR block) for your VPC that fits your current and 
+future needs for AWS resources (EC2, RDS, etc.)
 within that network.
 
 
 📚 What is CIDR?
 ----------------------------
 -> CIDR stands for Classless Inter-Domain Routing.
--> It’s a method for reserving  IP addresses range for a VPC for future allocation to resource for communication between them
+-> It’s a method for reserving  IP addresses range for a VPC for future allocation to resource 
+  for communication between them
 -> For 1 vpc there are 5 IPv4 and 1 IPv6
 
 🧮 CIDR Calculations Explained
@@ -2132,13 +2151,15 @@ Example 2: 10.0.0.0/24------>2^(32-24)----->2^8------->256
 
 🌐 What is a Subnet?
 --------------------------------
-A subnet (short for subnetwork) is a smaller network segment created by dividing a larger network (like a VPC) into multiple, logically separated pieces.
+A subnet (short for subnetwork) is a smaller network segment created by dividing a larger network (like a VPC)
+into multiple, logically separated pieces.
 allows us to organised and isolated tbe resources based on their function
 
 
 What is Route Table?
 ---------------------------
-A route table in a VPC is like the traffic police or traffic controller directing where each packet of data (like a vehicle) should go next:
+A route table in a VPC is like the traffic police or traffic controller directing where each packet of data
+(like a vehicle) should go next:
 * It defines how traffic should be routed within the VPC and to/from external network
 It looks at the destination (where the data wants to go).
 
@@ -2149,14 +2170,17 @@ Without it, the data wouldn’t know how to reach its destination, just like car
 So yes, the route table manages and controls the flow of network traffic 
 -> for 1 VPC  , there can be 200 RT
 Note:
-Each subnet must be associated with a route table. However, traffic within the same subnet does not require routing via the route table—instances communicate directly. Route tables are used to route traffic between subnets within a VPC, between VPCs, and from subnets to outside networks
+Each subnet must be associated with a route table. However, traffic within the same subnet does not require 
+routing via the route table—instances communicate directly. Route tables are used to route traffic between subnets
+within a VPC, between VPCs, and from subnets to outside networks
 
 Public Subnet
 ------------------
 A public subnet is a subnet that has a route to the internet via an Internet Gateway (IGW).
 If an internet is associated with a rount table for a subnet then subnet is pub subnet
 
-Instances (like EC2 servers) in a public subnet can directly communicate with the internet if they have a public IP address.
+Instances (like EC2 servers) in a public subnet can directly communicate with the internet if they have a 
+public IP address.
 
 Typically used for resources that must be accessible from the internet
 
@@ -2187,7 +2211,8 @@ For one VPC only 1 IGW is ALLOW
 ------------------------------------
 NAT Gateway stands for Network Address Translation Gateway.
 
-It allows instances in a private subnet to access the internet, but prevents the internet from initiating connections back to those instances.
+It allows instances in a private subnet to access the internet, but prevents the internet from initiating
+connections back to those instances.
 Allows only outbound traffic.....
 Why Outbound traffic?.............."some application needs update and for this we have to allow outbound traffic"
 
